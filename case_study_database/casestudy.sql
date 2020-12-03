@@ -73,7 +73,7 @@ trang_thai_kha_dung varchar(45)
 );
 create table hop_dong(
 id_hop_dong int primary key auto_increment,
-id_nhan_vien int,
+id_nhan_vien int,	
 id_khach_hang int,
 id_dich_vu int,
 foreign key(id_nhan_vien) references nhan_vien(id_nhan_vien) ON DELETE CASCADE,
@@ -98,3 +98,11 @@ insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung) va
 insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung) values('nuoc uong',120,12,'con moi');
 insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung) values('thue xe',200,10,'con moi');
 
+-- task2
+select * from casestudydatabase.nhan_vien 
+where (nhan_vien.ho_ten like 'H%' or nhan_vien.ho_ten like 'T%'
+or nhan_vien.ho_ten like 'K%') and length(nhan_vien.ho_ten) <=15;
+-- task3
+select * from casestudydatabase.khach_hang
+where (year(curdate()) - year(khach_hang.ngay_sinh) >= 18 and year(curdate()) - year(khach_hang.ngay_sinh) <=50)
+and (khach_hang.dia_chi = 'da nang' or khach_hang.dia_chi = 'quang tri');
