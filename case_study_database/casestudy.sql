@@ -210,6 +210,26 @@ in(select hop_dong.id_nhan_vien from hop_dong
 where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2020); 
 -- task17
 update khach_hang set khach_hang.id_loai_khach = 1 
-where khach_hang.id_loai_khach = 2 and 
+where khach_hang.id_loai_khach = 2 and khach_hang.id_khach_hang 
+in (select hop_dong.id_khach_hang from hop_dong where year(ngay_lam_hop_dong)=2019
+and hop_dong.tong_tien >=500);
+-- task18
+delete from khach_hang where exists (select hop_dong.id_khach_hang from hop_dong
+ where year(hop_dong.ngay_lam_hop_dong) < 2016 and hop_dong.id_khach_hang = khach_hang.id_khach_hang);
 
-
+delete from khach_hang where khach_hang.id_khach_hang 
+in (select xyz from (select hop_dong.id_khach_hang as xyz from khach_hang
+join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang where year(hop_dong.ngay_lam_hop_dong) < 2016) as abc);
+-- task19
+update dich_vu_di_kem set dich_vu_di_kem.gia = dich_vu_di_kem.gia*2 where dich_vu_di_kem.id_dich_vu_di_kem 
+in (select abc from
+(select hop_dong_chi_tiet.id_dich_vu_di_kem as abc,count(hop_dong_chi_tiet.id_hop_dong_chi_tiet) as solansudung from hop_dong_chi_tiet 
+join hop_dong on hop_dong.id_hop_dong = hop_dong_chi_tiet.id_hop_dong 
+group by hop_dong_chi_tiet.id_dich_vu_di_kem
+having solansudung > 10) as xyz);
+-- task20
+	select nhan_vien.id_nhan_vien,nhan_vien.ho_ten,nhan_vien.email,nhan_vien.sdt,nhan_vien.ngay_sinh,
+	nhan_vien.dia_chi from nhan_vien
+	union all
+	select khach_hang.id_khach_hang,khach_hang.ho_ten,khach_hang.email,khach_hang.sdt,khach_hang.ngay_sinh,
+	khach_hang.dia_chi from khach_hang;

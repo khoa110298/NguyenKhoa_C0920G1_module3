@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>truyen ngan</title>
+
+    <style>
+        h1{
+            margin-top: 0px;
+            background-color: black;
+            color: white;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            padding-top: 20px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            cursor: pointer;
+            color: red;
+        }
+        .ben_trai{
+            float: left;
+            width: 60%;
+        }
+        .ben_phai{
+            color: blue;
+            float: left;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>
+        TRANG CHỦ
+    </h1>
+</div>
+
+<div id="content">
+    <div class="ben_trai">
+        <img id="img" src="anh/co_tich.jpg" height="550px" width="800px" alt="">
+    </div>
+    <div class="ben_phai">
+        <h3>
+            <ul>
+                <li><a href="co_tich.html">truyện cổ tích: sự tích bánh chưng, bánh giầy</a></li><br>
+                <li><a href="ngon_tinh.html">truyện ngôn tình: người anh yêu chính là em</a></li><br>
+                <li><a href="truyen_ma.html">truyện ma:truyện ma 12 cung hoàng đạo</a> </li><br>
+                <li><a href="truyen_tranh.html">truyện tranh: thám tử lừng danh Conan</a> </li>
+            </ul>
+        </h3>
+    </div>
+</div>
+</body>
+<script>
+    var index = 1;
+    changeImage = function () {
+        var imgs = ["anh/co_tich.jpg","anh/ngon_tinh.jpg","anh/truyen_ma.jpg","anh/truyen_tranh.jpg"];
+        document.getElementById('img').src = imgs[index];
+        index++;
+        if (index == 4){
+            index = 0;
+        }
+    }
+    setInterval(changeImage,2000);
+
+</script>
+</html>
