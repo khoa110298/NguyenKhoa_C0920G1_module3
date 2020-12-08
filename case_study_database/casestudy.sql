@@ -135,7 +135,7 @@ dich_vu.chi_phi_thue,loai_dich_vu.ten_loai_dich_vu,ngay_lam_hop_dong from dich_v
 join loai_dich_vu on dich_vu.id_loai_dich_vu = loai_dich_vu.id_loai_dich_vu
 join hop_dong on hop_dong.id_dich_vu = dich_vu.id_dich_vu
 where year(ngay_lam_hop_dong) = 2018 and hop_dong.id_dich_vu not 
-in(select hop_dong.id_dich_vu from hop_dong where year(ngay_lam_hop_dong) = 2019);
+in (select hop_dong.id_dich_vu from hop_dong where year(ngay_lam_hop_dong) = 2019);
 -- task8
 select distinct khach_hang.ho_ten from khach_hang;
 select khach_hang.ho_ten from khach_hang group by khach_hang.ho_ten;
@@ -164,5 +164,52 @@ join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
 join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
 where ten_loai_khach = 'Diamond' and dia_chi in ('Vinh','quang ngai');
 -- task12
+select hop_dong.id_hop_dong,nhan_vien.ho_ten,khach_hang.ho_ten,khach_hang.sdt,
+dich_vu.ten_dich_vu,count(hop_dong_chi_tiet.id_dich_vu_di_kem) as soluongdichvudikem,
+hop_dong.tien_dat_coc from khach_hang 
+join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+join nhan_vien on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
+join dich_vu on hop_dong.id_dich_vu = dich_vu.id_dich_vu
+join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+where ((year(ngay_lam_hop_dong) = 2019 and month(ngay_lam_hop_dong) in(10,11,12))
+and hop_dong.id_dich_vu not 
+in (select hop_dong.id_dich_vu from hop_dong where year(ngay_lam_hop_dong)=2019 and month(ngay_lam_hop_dong) in(1,2,3,4,5,6)))
+group by hop_dong_chi_tiet.id_dich_vu_di_kem;
+-- task13
+select * from
+(select dich_vu_di_kem.ten_dich_vu_di_kem,count(hop_dong_chi_tiet.id_dich_vu_di_kem) as solansudung 
+from dich_vu_di_kem
+join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by hop_dong_chi_tiet.id_dich_vu_di_kem) as abc
+where solansudung = (select count(hop_dong_chi_tiet.id_dich_vu_di_kem) from dich_vu_di_kem
+join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by hop_dong_chi_tiet.id_dich_vu_di_kem 
+order by count(hop_dong_chi_tiet.id_dich_vu_di_kem) desc
+limit 1);
+-- task 14
+select hop_dong.id_hop_dong,loai_dich_vu.ten_loai_dich_vu,dich_vu_di_kem.ten_dich_vu_di_kem,
+count(hop_dong_chi_tiet.id_dich_vu_di_kem) as solansudung from dich_vu_di_kem
+join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+join hop_dong on hop_dong.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
+join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+join loai_dich_vu on loai_dich_vu.id_loai_dich_vu = dich_vu.id_loai_dich_vu
+group by hop_dong_chi_tiet.id_dich_vu_di_kem
+having solansudung = 1;
+-- task 15
+select nhan_vien.id_nhan_vien,nhan_vien.ho_ten,trinh_do.ten_trinh_do,bo_phan.ten_bo_phan,nhan_vien.sdt,
+nhan_vien.dia_chi,count(hop_dong.id_nhan_vien) as solanlamhopdong, 
+year(hop_dong.ngay_lam_hop_dong) as nam_hop_dong from bo_phan
+join nhan_vien on nhan_vien.id_bo_phan = bo_phan.id_bo_phan
+join trinh_do on nhan_vien.id_trinh_do = trinh_do.id_trinh_do
+join hop_dong on hop_dong.id_nhan_vien = nhan_vien.id_nhan_vien
+group by hop_dong.id_nhan_vien
+having (nam_hop_dong between 2018 and 2019) and solanlamhopdong <= 3;
+-- task16
+delete from nhan_vien where nhan_vien.id_nhan_vien not
+in(select hop_dong.id_nhan_vien from hop_dong 
+where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2020); 
+-- task17
+update khach_hang set khach_hang.id_loai_khach = 1 
+where khach_hang.id_loai_khach = 2 and 
 
 
