@@ -1,0 +1,124 @@
+#main{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #993035;
+}
+#head{
+    width: 100%;
+    height: 42px;
+    background-color: #3B5998;
+    position: fixed;
+
+}
+#content-left{
+    height: 100%;
+    width: 20%;
+    background-color: #EAEBEF;
+    float: left;
+    margin-top: 20px;
+}
+#content-mid{
+    height: 100%;
+    width: 45%;
+    background-color: white;
+    float: left;
+}
+#content-right{
+    height: 100%;
+    width: 35%;
+    background-color: #EAEBEF;
+    float: left;
+}
+#head a img{
+    position: relative;
+    top: 0;
+    left: 10px;
+    float: left;
+}
+#head input{
+    border: 0px;
+    border-radius: 20px;
+    width: 300px;
+    height: 30px;
+    float: left;
+    margin: 5px 0 0 10px;
+}
+#head img{
+    position: relative;
+    top: 3px;
+    right: 45px;
+}
+nav{
+    float: right;
+    margin: 10px 600px 0 0;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Tahoma;
+    margin-right: 30px;
+    font-weight: bold;
+    float: left;
+}
+nav img{
+    float: left;
+    margin: -4px -30px 0 0;
+}
+#content-left ul{
+    list-style: none;
+}
+#content-left li{
+    width: 110%;
+    height: 60px;
+    position: relative;
+    top: 26px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: -15px;
+}
+#content-left li:hover{
+    background-color: #E4E6E9;
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    margin-left: -20px;
+}
+#content-left ul li a{
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Tahoma;
+}
+#content-left li a img{
+    margin-right: 10px;
+    margin-left: -15px;
+    margin-bottom: -7px;
+}
+#content-mid a{
+    text-decoration: none;
+    float: right;
+    margin: -10px 15px 0 0;
+    color: #4f4d38;
+}
+#content-mid a:hover{
+    text-decoration: underline;
+    color: #555555;
+}
+#content-mid span{
+    position: relative;
+    top: 8px;
+    left: 7px;
+}
+#content-mid h4{
+    float: left;
+    width: 30%;
+    text-align: center;
+    margin: 0 0 10px 10px;
+    font-weight: normal;
+}
+#content-mid h4:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
