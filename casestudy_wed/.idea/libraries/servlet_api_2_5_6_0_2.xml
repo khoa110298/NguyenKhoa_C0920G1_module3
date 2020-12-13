@@ -1,0 +1,36 @@
+<component name="libraryTable">
+  <library name="servlet-api-2.5-6.0.2">
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/web/bootstrap413" />
+      <root url="file://$PROJECT_DIR$/web/datatables" />
+      <root url="file://$PROJECT_DIR$/web/jquery" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://D:/phammem/JDBC/user-manager-jdbc-master/web/WEB-INF/lib/servlet-api-2.5-6.0.2.jar!/" />
+      <root url="file://$PROJECT_DIR$/web/bootstrap413" />
+      <root url="file://$PROJECT_DIR$/web/datatables" />
+      <root url="file://$PROJECT_DIR$/web/jquery" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/web/bootstrap413" />
+      <root url="file://$PROJECT_DIR$/web/datatables" />
+      <root url="file://$PROJECT_DIR$/web/jquery" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/web/bootstrap413" />
+      <root url="file://$PROJECT_DIR$/web/datatables" />
+      <root url="file://$PROJECT_DIR$/web/jquery" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/web/bootstrap413" />
+      <root url="file://$PROJECT_DIR$/web/datatables" />
+      <root url="file://$PROJECT_DIR$/web/jquery" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/web/bootstrap413" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/datatables" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/jquery" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/bootstrap413" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/datatables" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/jquery" recursive="false" type="SOURCES" />
+  </library>
+</component>
