@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Furama</title>
+<%--    <title>Furama</title>--%>
 <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"--%>
 <%--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
     <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css">
@@ -49,7 +49,7 @@
       #footer{
         text-align: center;
         padding-top: 40px;
-        /*background-color: burlywood;*/
+        background-color: burlywood;
         width: 100%;
         height: 100px;
         position: relative;
@@ -158,7 +158,7 @@
   <script src="datatables/js/jquery.dataTables.min.js"></script>
   <script src="datatables/js/dataTables.bootstrap4.min.js"></script>
   <script src="bootstrap413/js/bootstrap.js"></script>
-  <script src="bootstrap413/js/bootstrap.bundle.js"></script>
+  <script src="jquery/popper.min.js"></script>
   </body>
   <script>
     var index = 1;
