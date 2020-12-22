@@ -73,11 +73,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void insertCustomer(Customer customer) throws SQLException {
         try(Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(INSERT_CUSTOMER_SQL)) {
-            statement.setInt(1,Integer.parseInt(customer.getCustomerId().substring(3)));
-            statement.setInt(2,Integer.parseInt(customer.getCustomerTypeId()));
+            statement.setString(1,customer.getCustomerId().substring(3));
+            statement.setString(2,customer.getCustomerTypeId());
             statement.setString(3,customer.getCustomerName());
             statement.setString(4,customer.getCustomerBirthday());
-            statement.setInt(5,Integer.parseInt(customer.getCustomerGender()));
+            statement.setString(5,customer.getCustomerGender());
             statement.setString(6,customer.getCustomerIdCard());
             statement.setString(7,customer.getCustomerPhone());
             statement.setString(8,customer.getCustomerEmail());
@@ -93,7 +93,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         boolean check;
         try(Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_SQL)) {
-            statement.setInt(1,Integer.parseInt(id));
+            statement.setInt( 1,Integer.parseInt(id.substring(3)));
             check = statement.executeUpdate() > 0;
         }finally {
             getConnection().close();

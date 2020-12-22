@@ -71,22 +71,34 @@ public class CustomerServlet extends HttpServlet {
         if (action == null) {
             action = " ";
         }
-        switch (action) {
-            case "create":
-                showCreateCustomer(request,response);
-                break;
-            case "search": {
-                break;
+        try {
+            switch (action) {
+                case "create":
+                    showCreateCustomer(request,response);
+                    break;
+                case "search": {
+                    break;
+                }
+                case "edit":
+                    break;
+                case "delete":
+                    deleteCustomer(request,response);
+                    break;
+                default:
+                    listCustomer(request, response);
+                    break;
             }
-            case "edit":
-                break;
-            case "delete":
-                break;
-            default:
-                listCustomer(request, response);
-                break;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String id = request.getParameter("customerId");
+        customerService.deleteCustomer(id);
+        response.sendRedirect("/customers");
     }
 
     private void showCreateCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

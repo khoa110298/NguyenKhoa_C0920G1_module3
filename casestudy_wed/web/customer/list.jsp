@@ -115,7 +115,7 @@
             <%--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelCreate">Add New Customer</button>--%>
         </h2>
     </center>
-    <table class="table table-striped">
+    <table class="table table-striped" id="tableCustomer">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -147,8 +147,8 @@
                     <a href="/customers?action=edit&id=${cus.customerId}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                        <%--                    <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
-                    <button type="button" class="btn btn-danger" onclick="getIdCustomer(${cus.customerId})"
+<%--                                            <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
+                    <button type="button" class="btn btn-danger" onclick="getIdCustomer('${cus.customerId}')"
                             data-toggle="modal" data-target="#modelDeleteCustomer">Delete</button>
                 </td>
             </tr>
@@ -204,10 +204,10 @@
     }
 
     $(document).ready(function () {
-        $('#tableEmployee').dataTable({
+        $('#tableCustomer').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 2
+            "pageLength": 5
         });
     });
 </script>

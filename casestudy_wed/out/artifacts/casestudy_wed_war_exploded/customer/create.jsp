@@ -47,7 +47,7 @@
             <tr>
                 <th>Birthday:</th>
                 <td>
-                    <input value="${birthday}" type="text" name="birthday" id="birthday" size="45" required/>
+                    <input value="${birthday}" type="date" name="birthday" id="birthday" size="45" required/>
                     <p style="color: red">${messageBirthDay} </p>
                 </td>
 
