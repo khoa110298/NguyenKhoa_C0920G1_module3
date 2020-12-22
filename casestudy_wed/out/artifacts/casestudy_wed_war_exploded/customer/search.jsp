@@ -87,7 +87,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="abc" class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/employees">Employee <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/employees`">Employee <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/customers">Customer <span class="sr-only">(current)</span></a>
@@ -110,9 +110,9 @@
 </div>
 <div id="content">
     <center>
-        <h1>Customer Manager</h1>
+        <h1>customer name <c:out value="${name}"/></h1>
         <h2>
-            <a href="/customers?action=create">Add New Customer</a>
+            <a href="/customers">back to list customer</a>
             <%--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelCreate">Add New Customer</button>--%>
         </h2>
     </center>
@@ -148,7 +148,7 @@
                     <a href="/customers?action=edit&id=${cus.customerId}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-<%--                                            <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
+                        <%--                                            <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
                     <button type="button" class="btn btn-danger" onclick="getIdCustomer('${cus.customerId}')"
                             data-toggle="modal" data-target="#modelDeleteCustomer">Delete</button>
                 </td>

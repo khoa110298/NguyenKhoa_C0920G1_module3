@@ -89,7 +89,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" name= "action" value="create"/>
+                    <input type="submit" name="action" value="create"/>
                 </td>
             </tr>
         </table>

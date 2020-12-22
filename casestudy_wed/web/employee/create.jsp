@@ -9,22 +9,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>create customer</title>
+    <title>create employee</title>
 </head>
 <body>
 <center>
     <h2>
-        Add New Customer
+        Add New Employee
     </h2>
 </center>
 <div align="center">
-    <form method="post" action="/customers">
+    <form method="post" action="/employees ?action=create">
+<%--        <input type="hidden" name="employeeId">--%>
         <table border="1" cellpadding="5">
             <tr>
-                <th>ID:</th>
+                <th>Name:</th>
                 <td>
-                    <input value="${customerId}" type="text" name="customerId" id="customerId" size="45" required/>
-                    <p style="color: red">${messagecustomerId} </p>
+                    <input value="${name}" type="text" name="name" id="name" size="45" required/>
                 </td>
             </tr>
             <tr>
@@ -36,12 +36,6 @@
                         </c:forEach>
                     </select>
 
-                </td>
-            </tr>
-            <tr>
-                <th>Name:</th>
-                <td>
-                    <input value="${name}" type="text" name="name" id="name" size="45" required/>
                 </td>
             </tr>
             <tr>

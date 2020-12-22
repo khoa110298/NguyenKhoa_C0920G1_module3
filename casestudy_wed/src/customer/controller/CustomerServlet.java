@@ -34,10 +34,10 @@ public class CustomerServlet extends HttpServlet {
                 case "create":
                     createCustomer(request,response);
                     break;
-                case "search": {
+                case "search":
                     break;
-                }
                 case "edit":
+                    editCustomer(request,response);
                     break;
                 case "delete":
                     break;
@@ -47,6 +47,20 @@ public class CustomerServlet extends HttpServlet {
         }
 
 
+    }
+
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String id = request.getParameter("customerId");
+        String typeId = request.getParameter("typeId");
+        String name = request.getParameter("customerName");
+        String birthDay = request.getParameter("birthday");
+        String gender = request.getParameter("gender");
+        String idCard = request.getParameter("idCard");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        customerService.updateCustomer(new Customer(id,typeId,name,birthDay,gender,idCard,phone,email,address));
+        response.sendRedirect("/customers");
     }
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -76,10 +90,11 @@ public class CustomerServlet extends HttpServlet {
                 case "create":
                     showCreateCustomer(request,response);
                     break;
-                case "search": {
+                case "search":
+                    findCustomerByname(request,response);
                     break;
-                }
                 case "edit":
+                    showEditCustomer(request,response);
                     break;
                 case "delete":
                     deleteCustomer(request,response);
@@ -93,6 +108,25 @@ public class CustomerServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    private void findCustomerByname(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("customerName");
+        List<Customer> customerList = customerService.searchByName(name);
+        request.setAttribute("customerList" ,customerList);
+        request.setAttribute("name" ,name);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/search.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void showEditCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String customerId = request.getParameter("id");
+        Customer customer = customerService.selectCustomer(customerId);
+        List<CustomerType> customerTypeList = customerTypeService.getAllCustomerType();
+        request.setAttribute("customer",customer);
+        request.setAttribute("customerType",customerTypeList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

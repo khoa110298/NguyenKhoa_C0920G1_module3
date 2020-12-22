@@ -125,12 +125,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         Customer customer = null;
         try(Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER)) {
-            statement.setInt(1,Integer.parseInt(id.substring(3)));
+            statement.setString(1,id.substring(3));
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 String typeID = resultSet.getString("customer_type_id");
                 String name = resultSet.getString("customer_name");
-                String birthday = resultSet.getString("customer_bi)rthday");
+                String birthday = resultSet.getString("customer_birthday");
                 String gender = resultSet.getString("customer_gender");
                 String idCard = resultSet.getString("customer_id_card");
                 String phone = resultSet.getString("customer_phone");

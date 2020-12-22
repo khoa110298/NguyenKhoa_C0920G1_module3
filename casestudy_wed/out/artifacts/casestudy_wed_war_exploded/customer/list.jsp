@@ -87,7 +87,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="abc" class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/employees`">Employee <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/employees">Employee <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/customers">Customer <span class="sr-only">(current)</span></a>
@@ -99,8 +99,9 @@
                         <a class="nav-link" href="/contracts">Contract <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" method="get" action="/customers">
+                    <input type="hidden" name="action" value="search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="customerName">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%--    <title>Furama</title>--%>
+        <title>Employee</title>
     <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"--%>
     <%--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
     <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css">
@@ -110,46 +110,52 @@
 </div>
 <div id="content">
     <center>
-        <h1>Customer Manager</h1>
+        <h1>Employee Manager</h1>
         <h2>
-            <a href="/customers?action=create">Add New Customer</a>
+            <a href="/employees?action=create">Add New Employee</a>
             <%--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelCreate">Add New Customer</button>--%>
         </h2>
     </center>
-    <table class="table table-striped" id="tableCustomer">
+    <table class="table table-striped" id="tableEmployee">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">TYPE ID</th>
             <th scope="col">NAME</th>
             <th scope="col">BIRTHDAY</th>
-            <th scope="col">GENDER</th>
             <th scope="col">ID CARD</th>
+            <th scope="col">SALARY</th>
             <th scope="col">PHONE</th>
             <th scope="col">EMAIL</th>
             <th scope="col">ADDRESS</th>
+            <th scope="col">POSITION ID</th>
+            <th scope="col">EDUCATION DEGREE ID</th>
+            <th scope="col">DIVISION ID</th>
+            <th scope="col">USER NAME</th>
             <th scope="col">EDIT</th>
             <th scope="col">DELETE</th>
 
         </thead>
         <tbody>
-        <c:forEach items="${customerList}" var="cus">
+        <c:forEach items="${employeeList}" var="employee">
             <tr>
-                <td><c:out value="${cus.customerId}"/></td>
-                <td><c:out value="${cus.customerTypeId}"/></td>
-                <td><c:out value="${cus.customerName}"/></td>
-                <td><c:out value="${cus.customerBirthday}"/></td>
-                <td><c:out value="${cus.customerGender}"/></td>
-                <td><c:out value="${cus.customerIdCard}"/></td>
-                <td><c:out value="${cus.customerPhone}"/></td>
-                <td><c:out value="${cus.customerEmail}"/></td>
-                <td><c:out value="${cus.customerAddress}"/></td>
+                <td><c:out value="${employee.employeeId}"/></td>
+                <td><c:out value="${employee.employeeName}"/></td>
+                <td><c:out value="${employee.employeeBirthday}"/></td>
+                <td><c:out value="${employee.employeeIdCard}"/></td>
+                <td><c:out value="${employee.employeeSalary}"/></td>
+                <td><c:out value="${employee.employeePhone}"/></td>
+                <td><c:out value="${employee.employeeEmail}"/></td>
+                <td><c:out value="${employee.employeeAddress}"/></td>
+                <td><c:out value="${employee.positionId}"/></td>
+                <td><c:out value="${employee.educationDegreeId}"/></td>
+                <td><c:out value="${employee.divisionId}"/></td>
+                <td><c:out value="${employee.userName}"/></td>
                 <td>
-                    <a href="/customers?action=edit&id=${cus.customerId}" class="btn btn-primary">Edit</a>
+                    <a href="/customers?action=edit&id=${employee.employeeId}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-<%--                                            <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
-                    <button type="button" class="btn btn-danger" onclick="getIdCustomer('${cus.customerId}')"
+                        <%--                                            <a href="/customers?action=delete&id=${cus.customerId}" class="btn btn-danger">Delete</a>--%>
+                    <button type="button" class="btn btn-danger" onclick="getIdEmployee('${employee.employeeId}')"
                             data-toggle="modal" data-target="#modelDeleteCustomer">Delete</button>
                 </td>
             </tr>
@@ -172,9 +178,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="get" action="/customers">
+            <form method="get" action="/employees">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="customerId" id="idCustomer">
+                <input type="hidden" name="employeeId" id="idEmployee">
                 <div class="modal-body">
                     Are You Sure
                 </div>
@@ -200,12 +206,12 @@
 <script src="jquery/popper.min.js"></script>
 </body>
 <script>
-    function getIdCustomer(id) {
-        $('#idCustomer').val(id);
+    function getIdEmployee(id) {
+        $('#idEmployee').val(id);
     }
 
     $(document).ready(function () {
-        $('#tableCustomer').dataTable({
+        $('#tableEmployee').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 5
