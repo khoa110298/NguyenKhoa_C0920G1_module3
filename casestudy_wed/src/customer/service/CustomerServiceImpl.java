@@ -9,33 +9,34 @@ import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
     CustomerRepository customerRepository = new CustomerRepositoryImpl();
+
     @Override
     public List<Customer> getAllCustomers() {
-        return null;
+        return customerRepository.getAllCustomers();
     }
 
     @Override
     public void insertCustomer(Customer customer) throws SQLException {
-
+        customerRepository.insertCustomer(customer);
     }
 
     @Override
-    public boolean deleteCustomer(int id) throws SQLException {
-        return false;
+    public boolean deleteCustomer(String id) throws SQLException {
+        return customerRepository.deleteCustomer(id);
     }
 
     @Override
     public boolean updateCustomer(Customer customer) throws SQLException {
-        return false;
+        return customerRepository.updateCustomer(customer);
     }
 
     @Override
-    public Customer selectCustomer(int id) {
-        return null;
+    public Customer selectCustomer(String id) {
+        return customerRepository.selectCustomer(id);
     }
 
     @Override
     public List<Customer> searchByName(String name) {
-        return null;
+        return customerRepository.searchByName(name);
     }
 }

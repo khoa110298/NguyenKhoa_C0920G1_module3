@@ -46,8 +46,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_CUSTOMER)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-                int id = resultSet.getInt("customer_id");
-                int type_id = resultSet.getInt("customer_type_id");
+                String id = "KH-" + resultSet.getString("customer_id");
+                String typeId = resultSet.getString("customer_type_id");
                 String name = resultSet.getString("customer_name");
                 String birthday = resultSet.getString("customer_birthday");
                 String gender = resultSet.getString("customer_gender");
@@ -55,7 +55,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 String phone = resultSet.getString("customer_phone");
                 String email = resultSet.getString("customer_email");
                 String address = resultSet.getString("customer_address");
-                customerList.add(new Customer(id,type_id,name,birthday,gender,idCard,phone,email,address));
+                customerList.add(new Customer(id,typeId,name,birthday,gender,idCard,phone,email,address));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,26 +71,101 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void insertCustomer(Customer customer) throws SQLException {
-
+        try(Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(INSERT_CUSTOMER_SQL)) {
+            statement.setInt(1,Integer.parseInt(customer.getCustomerId().substring(3)));
+            statement.setInt(2,Integer.parseInt(customer.getCustomerTypeId()));
+            statement.setString(3,customer.getCustomerName());
+            statement.setString(4,customer.getCustomerBirthday());
+            statement.setInt(5,Integer.parseInt(customer.getCustomerGender()));
+            statement.setString(6,customer.getCustomerIdCard());
+            statement.setString(7,customer.getCustomerPhone());
+            statement.setString(8,customer.getCustomerEmail());
+            statement.setString(9,customer.getCustomerAddress());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public boolean deleteCustomer(int id) throws SQLException {
-        return false;
+    public boolean deleteCustomer(String id) throws SQLException {
+        boolean check;
+        try(Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_SQL)) {
+            statement.setInt(1,Integer.parseInt(id));
+            check = statement.executeUpdate() > 0;
+        }finally {
+            getConnection().close();
+        }
+        return check;
     }
 
     @Override
     public boolean updateCustomer(Customer customer) throws SQLException {
-        return false;
+        boolean check;
+        try(Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_SQL)) {
+            statement.setInt(1,Integer.parseInt(customer.getCustomerTypeId()));
+            statement.setString(2,customer.getCustomerName());
+            statement.setString(3,customer.getCustomerBirthday());
+            statement.setInt(4,Integer.parseInt(customer.getCustomerGender()));
+            statement.setString(5,customer.getCustomerIdCard());
+            statement.setString(6,customer.getCustomerPhone());
+            statement.setString(7,customer.getCustomerEmail());
+            statement.setString(8,customer.getCustomerAddress());
+            statement.setInt(9,Integer.parseInt(customer.getCustomerId().substring(3)));
+            check = statement.executeUpdate() > 0;
+        }
+        return check;
     }
 
     @Override
-    public Customer selectCustomer(int id) {
-        return null;
+    public Customer selectCustomer(String id) {
+        Customer customer = null;
+        try(Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER)) {
+            statement.setInt(1,Integer.parseInt(id.substring(3)));
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                String typeID = resultSet.getString("customer_type_id");
+                String name = resultSet.getString("customer_name");
+                String birthday = resultSet.getString("customer_bi)rthday");
+                String gender = resultSet.getString("customer_gender");
+                String idCard = resultSet.getString("customer_id_card");
+                String phone = resultSet.getString("customer_phone");
+                String email = resultSet.getString("customer_email");
+                String address = resultSet.getString("customer_address");
+                customer = new Customer(id,typeID,name,birthday,gender,idCard,phone,email,address);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
     }
 
     @Override
     public List<Customer> searchByName(String name) {
-        return null;
+        List<Customer> customerList = new ArrayList<>();
+       try (Connection connection = getConnection();
+       PreparedStatement statement = connection.prepareStatement(SELECT_CUSTOMER_BY_NAME)){
+           statement.setString(1,"%"+name+"%");
+           ResultSet resultSet = statement.executeQuery();
+           while (resultSet.next()){
+               String id = "KH-" + resultSet.getString("customer_id");
+               String typeId = resultSet.getString("customer_type_id");
+               String name1 = resultSet.getString("customer_name");
+               String birthday = resultSet.getString("customer_birthday");
+               String gender = resultSet.getString("customer_gender");
+               String idCard = resultSet.getString("customer_id_card");
+               String phone = resultSet.getString("customer_phone");
+               String email = resultSet.getString("customer_email");
+               String address = resultSet.getString("customer_address");
+               customerList.add(new Customer(id,typeId,name1,birthday,gender,idCard,phone,email,address));
+           }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+       return customerList;
     }
 }

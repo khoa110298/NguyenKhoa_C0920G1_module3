@@ -38,4 +38,29 @@ public class UserServiceImpl implements UserService {
     public List<User> findUserByName(String name) {
         return userReposiory.findUserByName(name);
     }
+
+    @Override
+    public User getUserById(int id) {
+        return userReposiory.getUserById(id);
+    }
+
+    @Override
+    public void insertUserStore(User user) throws SQLException {
+        userReposiory.insertUserStore(user);
+    }
+
+    @Override
+    public void addUserTransaction(User user, int[] permision) {
+        userReposiory.addUserTransaction(user,permision);
+    }
+
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        userReposiory.insertUpdateWithoutTransaction();
+    }
+
+    @Override
+    public void insertUpdateUseTransaction() {
+        userReposiory.insertUpdateUseTransaction();
+    }
 }

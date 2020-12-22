@@ -17,4 +17,14 @@ public interface UserService {
     public boolean updateUser(User user) throws SQLException;
 
     public List<User> findUserByName(String name);
+
+    public User getUserById(int id);
+
+    public void insertUserStore(User user) throws SQLException;
+
+    public void addUserTransaction(User user, int[] permision);
+
+    public void insertUpdateWithoutTransaction();
+
+    public void insertUpdateUseTransaction();
 }

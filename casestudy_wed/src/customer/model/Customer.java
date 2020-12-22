@@ -1,45 +1,45 @@
 package customer.model;
 
 public class Customer {
-    private int customerId;
-    private int customerTypeId;
+    private String customerId;
+    private String customerTypeId;
     private String customerName;
     private String customerBirthday;
     private String customerGender;
     private String customerIdCard;
-    private String custoerPhone;
+    private String customerPhone;
     private String customerEmail;
     private String customerAddress;
 
     public Customer() {
     }
 
-    public Customer(int customerId, int customerTypeId, String customerName, String customerBirthday,
-                    String customerGender, String customerIdCard, String custoerPhone, String customerEmail, String customerAddress) {
+    public Customer(String customerId, String customerTypeId, String customerName, String customerBirthday,
+                    String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
         this.customerBirthday = customerBirthday;
         this.customerGender = customerGender;
         this.customerIdCard = customerIdCard;
-        this.custoerPhone = custoerPhone;
+        this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
-    public int getCustomerTypeId() {
+    public String getCustomerTypeId() {
         return customerTypeId;
     }
 
-    public void setCustomerTypeId(int customerTypeId) {
+    public void setCustomerTypeId(String customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
 
@@ -75,12 +75,12 @@ public class Customer {
         this.customerIdCard = customerIdCard;
     }
 
-    public String getCustoerPhone() {
-        return custoerPhone;
+    public String getCustomerPhone() {
+        return customerPhone;
     }
 
-    public void setCustoerPhone(String custoerPhone) {
-        this.custoerPhone = custoerPhone;
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
     }
 
     public String getCustomerEmail() {

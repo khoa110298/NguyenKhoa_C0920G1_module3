@@ -51,7 +51,8 @@ public class UserServlet extends HttpServlet {
         String name1 = request.getParameter("name");
         String email1 = request.getParameter("email");
         String country1 = request.getParameter("country");
-        userService.insertUser(new User(name1, email1, country1));
+//        userService.insertUser(new User(name1, email1, country1));
+        userService.insertUserStore(new User(name1,email1,country1));
         response.sendRedirect("/users");
     }
 
@@ -75,6 +76,16 @@ public class UserServlet extends HttpServlet {
                 case "search":
                     findByName(request,response);
                     break;
+                case "permision":
+                    addUserPermision(request, response);
+                    break;
+                case "test-without-tran":
+                    testWithoutTran(request, response);
+                    break;
+                case "test-use-tran":
+                    testUseTran(request, response);
+                    break;
+
                 default:
                     listUser(request, response);
                     break;
@@ -84,6 +95,22 @@ public class UserServlet extends HttpServlet {
         }
 
 
+    }
+
+    private void testUseTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateUseTransaction();
+    }
+
+    private void testWithoutTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateWithoutTransaction();
+    }
+
+    private void addUserPermision(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User("kien", "kienhoang@gmail.com", "vn");
+
+        int[] permision = {1, 2, 4};
+
+        userService.addUserTransaction(user, permision);
     }
 
     private void findByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -96,7 +123,8 @@ public class UserServlet extends HttpServlet {
 
     private void showEditUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        User user = userService.selectUser(id);
+//        User user = userService.selectUser(id);
+        User user = userService.getUserById(id);
         request.setAttribute("user",user);
         RequestDispatcher dispatcher = request.getRequestDispatcher("khoa/edit.jsp");
         dispatcher.forward(request,response);
