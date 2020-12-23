@@ -18,7 +18,7 @@
     </h2>
 </center>
 <div align="center">
-    <form method="post" action="/employees ?action=create">
+    <form method="post" action="/employees?action=create">
 <%--        <input type="hidden" name="employeeId">--%>
         <table border="1" cellpadding="5">
             <tr>
@@ -27,17 +27,16 @@
                     <input value="${name}" type="text" name="name" id="name" size="45" required/>
                 </td>
             </tr>
-            <tr>
-                <th>typeId:</th>
-                <td>
-                    <select name="typeId">
-                        <c:forEach items="${customerTypeList}" var="customerType">
-                            <option value="${customerType.id}" ${typeId == customerType.id ? "selected" : ""}>${customerType.name}</option>
-                        </c:forEach>
-                    </select>
-
-                </td>
-            </tr>
+<%--            <tr>--%>
+<%--                <th>typeId:</th>--%>
+<%--                <td>--%>
+<%--                    <select name="typeId">--%>
+<%--                        <c:forEach items="${customerTypeList}" var="customerType">--%>
+<%--                            <option value="${customerType.id}" ${typeId == customerType.id ? "selected" : ""}>${customerType.name}</option>--%>
+<%--                        </c:forEach>--%>
+<%--                    </select>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
             <tr>
                 <th>Birthday:</th>
                 <td>
@@ -47,18 +46,15 @@
 
             </tr>
             <tr>
-                <th>Gender:</th>
-                <td>
-                    <select name="gender">
-                        <option value="1">nam</option>
-                        <option value="0">nu</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
                 <th>IdCard:</th>
                 <td>
                     <input value="${idCard}" type="text" name="idCard" id="idCard" size="45"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Salary:</th>
+                <td>
+                    <input value="${salary}" type="text" name="salary" id="salary" size="45"/>
                 </td>
             </tr>
             <tr>
@@ -79,6 +75,46 @@
                 <th>Address:</th>
                 <td>
                     <input value="${address}" type="text" name="address" id="adress" size="45"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Position Id:</th>
+                <td>
+                    <select name="positionId">
+                        <c:forEach items="${positionList}" var="customerType">
+                            <option value="${customerType.id}" >${customerType.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>education degree id:</th>
+                <td>
+                    <select name="educationId">
+                        <c:forEach items="${educationDegreeList}" var="customerType">
+                            <option value="${customerType.id}" >${customerType.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Division Id:</th>
+                <td>
+                    <select name="divisionId">
+                        <c:forEach items="${divisionList}" var="customerType">
+                            <option value="${customerType.id}" >${customerType.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>user name:</th>
+                <td>
+                    <select name="userName">
+                        <c:forEach items="${userList}" var="customerType">
+                            <option value="${customerType.name}" >${customerType.name}</option>
+                        </c:forEach>
+                    </select>
                 </td>
             </tr>
             <tr>

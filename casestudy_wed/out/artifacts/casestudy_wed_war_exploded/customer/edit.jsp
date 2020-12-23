@@ -38,8 +38,14 @@
                 <th>TypeId:</th>
                 <td>
                     <select name="typeId">
-                        <c:forEach items="${customerType}" var="customerType">
-                            <option value="${customerType.id}" ${typeId == customerType.id ? "selected" : ""}>${customerType.name}</option>
+                        <c:forEach items="${customerType}" var="type">
+<%--                            <c:if test="${type.id == customer.customerTypeId}">--%>
+<%--                                <option value="${type.id}" selected>${type.name}</option>--%>
+                                <option value="${type.id}" ${type.id == customer.customerTypeId ? "selected" : ""}>${type.name}</option>
+<%--                            </c:if>--%>
+<%--                            <c:if test="${type.id != customer.customerTypeId}">--%>
+<%--                                <option value="${type.id}">${type.name}</option>--%>
+<%--                            </c:if>--%>
 
                         </c:forEach>
                     </select>
@@ -62,11 +68,13 @@
             <tr>
                 <th>gender:</th>
                 <td>
-<%--                    <input type="text" name="gender" size="45"--%>
-<%--                           value="<c:out value='${customer.customerGender}' />"/>--%>
+                    <%--                    <input type="text" name="gender" size="45"--%>
+                    <%--                           value="<c:out value='${customer.customerGender}' />"/>--%>
                     <select name="gender">
-                        <option value="0">nu</option>
-                        <option value="1">nam</option>
+                        <%--                        <option value="1" >nam</option>--%>
+                        <%--                        <option value="0" >nu</option>--%>
+                            <option value="0" ${customer.customerGender == 0 ? 'selected':''}>nu</option>
+                            <option value="1" ${customer.customerGender == 1 ? 'selected':''}>nam</option>
                     </select>
                 </td>
             </tr>

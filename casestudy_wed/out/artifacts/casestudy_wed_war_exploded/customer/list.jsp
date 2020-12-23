@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%--    <title>Furama</title>--%>
+        <title>Customer</title>
     <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"--%>
     <%--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
     <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css">
@@ -156,6 +156,7 @@
         </c:forEach>
         </tbody>
     </table>
+    <h2 style="text-align: center;color: yellow">${messageConfig}</h2>
 </div>
 
 
