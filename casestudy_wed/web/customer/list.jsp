@@ -99,11 +99,11 @@
                         <a class="nav-link" href="/contracts">Contract <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" method="get" action="/customers">
-                    <input type="hidden" name="action" value="search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="customerName">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <form class="form-inline my-2 my-lg-0" method="get">
+                <input type="hidden" name="action" value="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="customerName">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             </div>
         </nav>
     </div>

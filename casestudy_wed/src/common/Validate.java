@@ -8,8 +8,11 @@ public class Validate {
     private static Matcher matcher;
 
     private static final String REGEX_PHONE = "^(09|\\(84\\)\\+9)[01]\\d{7}$";
+    private static final String PHONE_NUMBER_CHECKING = "(090|091|\\(84\\)\\+90|\\(84\\)\\+91)\\d{7}";
     private static final String REGEX_DATE = "^\\d{4}(\\/|-)\\d{2}(\\/|-)\\d{2}$";
-    private static final String REGEX_EMAIL = "^\\w{3,}(\\.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
+    private static final String REGEX_EMAIL = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+    private static final String REGEX_ID_CARD = "^\\d{9}|\\d{12}$";
+    private static final String REGEX_CUSTOMER_ID ="^(KH-)\\d{4}$";
 
 
     public static void regexPhone(String phone) throws PhoneException {

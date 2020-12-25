@@ -87,7 +87,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="abc" class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/employees`">Employee <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/employees">Employee <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/customers">Customer <span class="sr-only">(current)</span></a>

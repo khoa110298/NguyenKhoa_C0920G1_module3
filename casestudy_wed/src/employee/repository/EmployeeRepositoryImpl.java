@@ -117,18 +117,18 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         boolean check;
         try(Connection connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL)) {
-            statement.setString(1,employee.getEmployeeId());
-            statement.setString(2,employee.getEmployeeName());
-            statement.setString(3,employee.getEmployeeBirthday());
-            statement.setString(4,employee.getEmployeeIdCard());
-            statement.setString(5,employee.getEmployeeSalary());
-            statement.setString(6,employee.getEmployeePhone());
-            statement.setString(7,employee.getEmployeeEmail());
-            statement.setString(8,employee.getEmployeeAddress());
-            statement.setString(9,employee.getPositionId());
-            statement.setString(10,employee.getEducationDegreeId());
-            statement.setString(11,employee.getDivisionId());
-            statement.setString(12,employee.getUserName());
+            statement.setString(12,employee.getEmployeeId());
+            statement.setString(1,employee.getEmployeeName());
+            statement.setString(2,employee.getEmployeeBirthday());
+            statement.setString(3,employee.getEmployeeIdCard());
+            statement.setString(4,employee.getEmployeeSalary());
+            statement.setString(5,employee.getEmployeePhone());
+            statement.setString(6,employee.getEmployeeEmail());
+            statement.setString(7,employee.getEmployeeAddress());
+            statement.setString(8,employee.getPositionId());
+            statement.setString(9,employee.getEducationDegreeId());
+            statement.setString(10,employee.getDivisionId());
+            statement.setString(11,employee.getUserName());
             check = statement.executeUpdate() > 0;
         }
         return check;

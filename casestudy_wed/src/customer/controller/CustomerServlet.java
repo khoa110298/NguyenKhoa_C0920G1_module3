@@ -172,7 +172,7 @@ public class CustomerServlet extends HttpServlet {
         String name = request.getParameter("customerName");
         List<Customer> customerList = customerService.searchByName(name);
         request.setAttribute("customerList" ,customerList);
-        request.setAttribute("name" ,name);
+//        request.setAttribute("name" ,name);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/search.jsp");
         dispatcher.forward(request,response);
     }

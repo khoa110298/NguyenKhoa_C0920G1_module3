@@ -32,7 +32,7 @@
                 <td>
                     <select name="typeId">
                         <c:forEach items="${customerTypeList}" var="customerType">
-                            <option value="${customerType.id}" ${typeId == customerType.id ? "selected" : ""}>${customerType.name}</option>
+                            <option value="${customerType.id}" }>${customerType.name}</option>
                         </c:forEach>
                     </select>
 
