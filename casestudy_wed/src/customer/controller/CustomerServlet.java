@@ -1,9 +1,6 @@
 package customer.controller;
 
-import common.BirthdayException;
-import common.EmailException;
-import common.PhoneException;
-import common.Validate;
+import common.*;
 import customer.model.Customer;
 import customer.model.CustomerType;
 import customer.service.CustomerService;
@@ -72,15 +69,26 @@ public class CustomerServlet extends HttpServlet {
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         boolean check = true;
+        String messageId = null;
+        String messageIdCard = null;
         String messagePhone= null;
         String messageBirthDay = null;
         String messageEmail = null;
         String birthDay = null;
         String phone = null;
         String email = null;
+        String customerId = null;
+        String idCard = null;
 
-        String customerId = request.getParameter("customerId");
-        String typeID = request.getParameter("typeId");
+        try {
+            customerId = request.getParameter("customerId");
+            validate.regexIdCustomer(customerId);
+        } catch (ValidateException e) {
+            messageId = e.getMessage();
+            check = false;
+        }
+
+        String typeId = request.getParameter("typeId");
         String name = request.getParameter("name");
         try {
             birthDay = request.getParameter("birthday");
@@ -91,7 +99,15 @@ public class CustomerServlet extends HttpServlet {
         }
 
         String gender = request.getParameter("gender");
-        String idCard = request.getParameter("idCard");
+
+        try {
+            idCard = request.getParameter("idCard");
+            validate.regexIdCard(idCard);
+        }catch (ValidateException e){
+            messageIdCard = e.getMessage();
+            check = false;
+        }
+
         try {
             phone = request.getParameter("phone");
             validate.regexPhone(phone);
@@ -110,7 +126,7 @@ public class CustomerServlet extends HttpServlet {
 
         if (!check){
             request.setAttribute("customerId", customerId);
-            request.setAttribute("typeId", typeID);
+            request.setAttribute("typeId", typeId);
             request.setAttribute("name", name);
             request.setAttribute("birthday",birthDay);
             request.setAttribute("gender",gender);
@@ -119,20 +135,19 @@ public class CustomerServlet extends HttpServlet {
             request.setAttribute("email",email);
             request.setAttribute("address",address);
 
+
+            request.setAttribute("messageId",messageId);
+            request.setAttribute("messageIdCard",messageIdCard);
             request.setAttribute("messageBirthDay",messageBirthDay);
             request.setAttribute("messagePhone",messagePhone);
             request.setAttribute("messageEmail",messageEmail);
             showCreateCustomer(request,response);
         }else {
-            customerService.insertCustomer(new Customer(customerId,typeID,name,birthDay,gender,idCard,phone,email,address));
+            customerService.insertCustomer(new Customer(customerId,typeId,name,birthDay,gender,idCard,phone,email,address));
             request.setAttribute("messageConfig","đã thêm thành công");
 //        response.sendRedirect("/customers");
             listCustomer(request,response);
         }
-        customerService.insertCustomer(new Customer(customerId,typeID,name,birthDay,gender,idCard,phone,email,address));
-        request.setAttribute("messageConfig","đã thêm thành công");
-//        response.sendRedirect("/customers");
-        listCustomer(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

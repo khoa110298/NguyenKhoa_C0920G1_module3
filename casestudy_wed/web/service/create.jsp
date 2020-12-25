@@ -19,6 +19,7 @@
 </center>
 <div align="center">
     <form method="post" action="/services">
+        <input type="hidden" name="action"  value="create">
         <table border="1" cellpadding="5">
             <tr>
                 <th>ID:</th>

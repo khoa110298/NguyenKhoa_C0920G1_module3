@@ -13,7 +13,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
 
 
     private static final String SELECT_ALL_DIVISION = "select * from service";
-    private static final String INSERT_SERVICE = "insert into  service(service_id,service_name,sarvice_area," +
+    private static final String INSERT_SERVICE = "insert into service(service_id,service_name,sarvice_area," +
             "service_cost,service_max_people,rent_type_id,service_type_id,standard_room,pool_area,number_of_floors) " +
             "values(?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_SERVICE = "delete from service where service_id = ?";
@@ -59,7 +59,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
     public void insertService(Service service) throws SQLException {
         try(Connection connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(INSERT_SERVICE)) {
-            statement.setString(1,service.getServiceId());
+            statement.setString(1,service.getServiceId().substring(3));
             statement.setString(2,service.getServiceName());
             statement.setString(3,service.getServiceAre());
             statement.setString(4,service.getServiceCost());
@@ -69,7 +69,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
             statement.setString(8,service.getStandRoom());
             statement.setString(9,service.getPoolArea());
             statement.setString(10,service.getNumberFloor());
-            statement.executeUpdate();
+            statement.  executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }

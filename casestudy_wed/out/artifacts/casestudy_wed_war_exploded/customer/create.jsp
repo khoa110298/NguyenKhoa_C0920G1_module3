@@ -24,7 +24,7 @@
                 <th>ID:</th>
                 <td>
                     <input value="${customerId}" type="text" name="customerId" id="customerId" size="45" required/>
-                    <p style="color: red">${messagecustomerId} </p>
+                    <p style="color: red">${messageId} </p>
                 </td>
             </tr>
             <tr>
@@ -65,6 +65,7 @@
                 <th>IdCard:</th>
                 <td>
                     <input value="${idCard}" type="text" name="idCard" id="idCard" size="45"/>
+                    <p style="color: red">${messageIdCard} </p>
                 </td>
             </tr>
             <tr>

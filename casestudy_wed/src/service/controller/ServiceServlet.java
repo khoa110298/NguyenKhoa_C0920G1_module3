@@ -41,7 +41,7 @@ public class ServiceServlet extends HttpServlet {
     }
 
     private void CreateService(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        String id = request.getParameter("idService");
+        String id = request.getParameter("serviceId");
         String name = request.getParameter("nameService");
         String serviceAre = request.getParameter("area");
         String serviceCost = request.getParameter("cost");
