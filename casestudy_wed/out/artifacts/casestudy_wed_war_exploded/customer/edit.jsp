@@ -39,13 +39,13 @@
                 <td>
                     <select name="typeId">
                         <c:forEach items="${customerType}" var="type">
-<%--                            <c:if test="${type.id == customer.customerTypeId}">--%>
-<%--                                <option value="${type.id}" selected>${type.name}</option>--%>
-                                <option value="${type.id}" ${type.id == customer.customerTypeId ? "selected" : ""}>${type.name}</option>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${type.id != customer.customerTypeId}">--%>
-<%--                                <option value="${type.id}">${type.name}</option>--%>
-<%--                            </c:if>--%>
+                            <%--                            <c:if test="${type.id == customer.customerTypeId}">--%>
+                            <%--                                <option value="${type.id}" selected>${type.name}</option>--%>
+                            <option value="${type.id}" ${type.id == customer.customerTypeId ? "selected" : ""}>${type.name}</option>
+                            <%--                            </c:if>--%>
+                            <%--                            <c:if test="${type.id != customer.customerTypeId}">--%>
+                            <%--                                <option value="${type.id}">${type.name}</option>--%>
+                            <%--                            </c:if>--%>
 
                         </c:forEach>
                     </select>
@@ -61,8 +61,13 @@
             <tr>
                 <th>birthday:</th>
                 <td>
+                    <%--                    <c:if test="${customer.customerBirthday != birthday}">--%>
+                    <%--                        <input type="date" name="birthday" size="45"--%>
+                    <%--                               value="<c:out value='${birthday}' />"/>--%>
+                    <%--                    </c:if>--%>
                     <input type="date" name="birthday" size="45"
                            value="<c:out value='${customer.customerBirthday}' />"/>
+                    <p style="color: red">${messageBirthDay}</p>
                 </td>
             </tr>
             <tr>
@@ -73,30 +78,45 @@
                     <select name="gender">
                         <%--                        <option value="1" >nam</option>--%>
                         <%--                        <option value="0" >nu</option>--%>
-                            <option value="0" ${customer.customerGender == 0 ? 'selected':''}>nu</option>
-                            <option value="1" ${customer.customerGender == 1 ? 'selected':''}>nam</option>
+                        <option value="0" ${customer.customerGender == 0 ? 'selected':''}>nu</option>
+                        <option value="1" ${customer.customerGender == 1 ? 'selected':''}>nam</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>IdCard:</th>
                 <td>
+                    <%--                    <c:if test="${customer.customerIdCard != idCard}">--%>
+                    <%--                        <input type="text" name="idCard" size="45"--%>
+                    <%--                               value="<c:out value='${idCard}' />"/>--%>
+                    <%--                    </c:if>--%>
                     <input type="text" name="idCard" size="45"
                            value="<c:out value='${customer.customerIdCard}' />"/>
+                        <p style="color: red">${messageIdCard}</p>
                 </td>
             </tr>
             <tr>
                 <th>phone:</th>
                 <td>
+                    <%--                    <c:if test="${customer.customerPhone != phone}">--%>
+                    <%--                        <input type="text" name="phone" size="45"--%>
+                    <%--                               value="<c:out value='${phone}' />"/>--%>
+                    <%--                    </c:if>--%>
                     <input type="text" name="phone" size="45"
                            value="<c:out value='${customer.customerPhone}' />"/>
+                        <p style="color: red">${messagePhone}</p>
                 </td>
             </tr>
             <tr>
                 <th>Email:</th>
                 <td>
+                    <%--                    <c:if test="${customer.customerEmail != email}">--%>
+                    <%--                        <input type="text" name="email" size="45"--%>
+                    <%--                               value="<c:out value='${email}' />"/>--%>
+                    <%--                    </c:if>--%>
                     <input type="text" name="email" size="45"
                            value="<c:out value='${customer.customerEmail}' />"/>
+                        <p style="color: red">${messageEmail}</p>
                 </td>
             </tr>
             <tr>
